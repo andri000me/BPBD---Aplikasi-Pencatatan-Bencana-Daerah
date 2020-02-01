@@ -45,6 +45,12 @@
               <p>Kategori</p>
             </a>
           </li>
+          <li>
+            <a href="<?= $domain ?>laporan.php">
+              <i class="now-ui-icons ui-1_bell-53"></i>
+              <p>Laporan</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

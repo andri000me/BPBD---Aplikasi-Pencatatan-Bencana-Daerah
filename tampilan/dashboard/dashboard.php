@@ -28,84 +28,6 @@
       </div>
       <div class="content">
         <div class="row">
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Global Sales</h5>
-                <h4 class="card-title">Shipped Products</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="lineChartExample"></canvas>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">2018 Sales</h5>
-                <h4 class="card-title">All products</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Email Statistics</h5>
-                <h4 class="card-title">24 Hours Performance</h4>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
             <div class="card  card-tasks">
               <div class="card-header ">
@@ -304,7 +226,220 @@
   <script src="<?= $domain ?>assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?= $domain ?>assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="<?= $domain ?>assets/js/bpbd.js"></script>
+<script>
+demo = {
+    initDashboardPageCharts: function() {
+  
+      chartColor = "#FFFFFF";
+  
+      // General configuration for the charts with Line gradientStroke
+      gradientChartOptionsConfiguration = {
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        tooltips: {
+          bodySpacing: 4,
+          mode: "nearest",
+          intersect: 0,
+          position: "nearest",
+          xPadding: 10,
+          yPadding: 10,
+          caretPadding: 10
+        },
+        responsive: 1,
+        scales: {
+          yAxes: [{
+            display: 0,
+            gridLines: 0,
+            ticks: {
+              display: false
+            },
+            gridLines: {
+              zeroLineColor: "transparent",
+              drawTicks: false,
+              display: false,
+              drawBorder: false
+            }
+          }],
+          xAxes: [{
+            display: 0,
+            gridLines: 0,
+            ticks: {
+              display: false
+            },
+            gridLines: {
+              zeroLineColor: "transparent",
+              drawTicks: false,
+              display: false,
+              drawBorder: false
+            }
+          }]
+        },
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            top: 15,
+            bottom: 15
+          }
+        }
+      };
+  
+      gradientChartOptionsConfigurationWithNumbersAndGrid = {
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        tooltips: {
+          bodySpacing: 4,
+          mode: "nearest",
+          intersect: 0,
+          position: "nearest",
+          xPadding: 10,
+          yPadding: 10,
+          caretPadding: 10
+        },
+        responsive: true,
+        scales: {
+          yAxes: [{
+            gridLines: 0,
+            gridLines: {
+              zeroLineColor: "transparent",
+              drawBorder: false
+            }
+          }],
+          xAxes: [{
+            display: 0,
+            gridLines: 0,
+            ticks: {
+              display: false
+            },
+            gridLines: {
+              zeroLineColor: "transparent",
+              drawTicks: false,
+              display: false,
+              drawBorder: false
+            }
+          }]
+        },
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            top: 15,
+            bottom: 15
+          }
+        }
+      };
+  
+      var ctx = document.getElementById('bigDashboardChart').getContext("2d");
+  
+      var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+      gradientStroke.addColorStop(0, '#80b6f4');
+      gradientStroke.addColorStop(1, chartColor);
+  
+      var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+      gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+      gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+  
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+          datasets: [{
+            label: "Data",
+            borderColor: chartColor,
+            pointBorderColor: chartColor,
+            pointBackgroundColor: "#1e3d60",
+            pointHoverBackgroundColor: "#1e3d60",
+            pointHoverBorderColor: chartColor,
+            pointBorderWidth: 1,
+            pointHoverRadius: 7,
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            fill: true,
+            backgroundColor: gradientFill,
+            borderWidth: 2,
+            data: <?= $hasil;?>
+          }]
+        },
+        options: {
+          layout: {
+            padding: {
+              left: 20,
+              right: 20,
+              top: 0,
+              bottom: 0
+            }
+          },
+          maintainAspectRatio: false,
+          tooltips: {
+            backgroundColor: '#fff',
+            titleFontColor: '#333',
+            bodyFontColor: '#666',
+            bodySpacing: 4,
+            xPadding: 12,
+            mode: "nearest",
+            intersect: 0,
+            position: "nearest"
+          },
+          legend: {
+            position: "bottom",
+            fillStyle: "#FFF",
+            display: false
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: "rgba(255,255,255,0.4)",
+                fontStyle: "bold",
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                padding: 10
+              },
+              gridLines: {
+                drawTicks: true,
+                drawBorder: false,
+                display: true,
+                color: "rgba(255,255,255,0.1)",
+                zeroLineColor: "transparent"
+              }
+  
+            }],
+            xAxes: [{
+              gridLines: {
+                zeroLineColor: "transparent",
+                display: false,
+  
+              },
+              ticks: {
+                padding: 10,
+                fontColor: "rgba(255,255,255,0.4)",
+                fontStyle: "bold"
+              }
+            }]
+          }
+        }
+      });
+  
+      var cardStatsMiniLineColor = "#fff",
+        cardStatsMiniDotColor = "#fff";
+  
+      ctx = document.getElementById('lineChartExample').getContext("2d");
+  
+      gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+      gradientStroke.addColorStop(0, '#80b6f4');
+      gradientStroke.addColorStop(1, chartColor);
+  
+      gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+      gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+      gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+
+    },
+  
+  };
+</script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
