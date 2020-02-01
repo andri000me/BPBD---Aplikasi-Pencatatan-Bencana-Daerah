@@ -96,7 +96,11 @@
                     <div class="col-md-6 px-1">
                       <div class="form-group">
                         <label>Status</label>
-                        <input type="radio" class="form-control" placeholder="Lokasi" name="lokasi" id="lokasi" required>
+                        <select name="status" class="form-control status">
+                          <option value="Luka Ringan">Luka Ringan</option>
+                          <option value="Luka Parah">Luka Parah</option>
+                          <option value="Meninggal">Meninggal</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-4 px-1">
