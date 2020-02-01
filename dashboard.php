@@ -1,7 +1,7 @@
 <?php
 require('config/config.php');
 
-$tahun = 2020;
+$tahun = date("Y");
 $bulan = 01;
 
 $sql01 = "SELECT count(*) as total FROM rl_kejadian WHERE waktu LIKE '".$tahun."-01%'";
