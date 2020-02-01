@@ -42,8 +42,6 @@ $hasil12 = mysqli_fetch_assoc(mysqli_query($connect, $sql12));
 
 $hasil = "[".$hasil01['total'].",".$hasil02['total'].",".$hasil03['total'].",".$hasil04['total'].",".$hasil05['total'].",".$hasil06['total'].",".$hasil07['total'].",".$hasil08['total'].",".$hasil09['total'].",".$hasil10['total'].",".$hasil11['total'].",".$hasil12['total']."]";
 
-
-
 include('tampilan/dashboard/dashboard.php');
 
 ?>
