@@ -54,7 +54,7 @@ function daftarkecamatan($kota,$search){
         die("Koneksi Gagal: " . $conn->connect_error);
     }
     
-    $sql = "SELECT * FROM tb_kecamatan WHERE id_kota = ".$kota." OR nama_kecamatan LIKE '%$search%' ORDER BY nama_kecamatan ASC";
+    $sql = "SELECT * FROM tb_kecamatan WHERE id_kota = ".$kota." AND nama_kecamatan LIKE '%$search%' ORDER BY nama_kecamatan ASC";
     $result = $connect->query($sql);
     
     if ($result->num_rows > 0) {
@@ -78,7 +78,7 @@ function daftardesa($kec,$search){
         die("Koneksi Gagal: " . $conn->connect_error);
     }
     
-    $sql = "SELECT * FROM tb_desa WHERE id_kecamatan = ".$kec." OR nama_desa LIKE '%$search%' ORDER BY nama_desa ASC";
+    $sql = "SELECT * FROM tb_desa WHERE id_kecamatan = ".$kec." AND nama_desa LIKE '%$search%' ORDER BY nama_desa ASC";
     $result = $connect->query($sql);
     
     if ($result->num_rows > 0) {
