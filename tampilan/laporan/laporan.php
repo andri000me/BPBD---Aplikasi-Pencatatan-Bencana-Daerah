@@ -36,12 +36,18 @@
             <div class="row">
             <div class="col-md-8">
                   <div class="row">
-                  <div class="col-md-12 px-1">
+                  <div class="col-md-6 px-1">
                       <div class="form-group">
                         <label>Pilih Kategori</label>
                         <select name="kategori" class="form-control kategori">
                           <option value="">- pilih Kejadian -</option>
                         </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 px-1">
+                      <div class="form-group">
+                        <label>Waktu</label>
+                        <input type="datetime-local" class="form-control" placeholder="Waktu" name="waktu" id="waktu" required>
                       </div>
                     </div>
                   <div class="col-md-4 px-1">

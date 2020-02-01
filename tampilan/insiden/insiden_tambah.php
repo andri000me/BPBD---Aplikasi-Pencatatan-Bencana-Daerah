@@ -84,7 +84,7 @@
                     <div class="col-md-6 px-1">
                       <div class="form-group">
                         <label>Waktu</label>
-                        <input type="text" class="form-control" placeholder="Waktu" name="waktu" id="waktu" required>
+                        <input type="datetime-local" class="form-control" placeholder="Waktu" name="waktu" id="waktu" required>
                       </div>
                     </div>
                     <div class="col-md-6 px-1">
